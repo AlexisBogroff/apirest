@@ -1,0 +1,4 @@
+{
+    "DEBUG": true,
+    "SECRET_KEY": "un_secret_très_sécurisé"
+}
