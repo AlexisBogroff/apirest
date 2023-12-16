@@ -1,14 +1,13 @@
 from flask import Flask, jsonify, request
 import time
 import logging
-logging.basicConfig(filename='error.log', level=logging.ERROR)
+logging.basicConfig(filename='error.log', level=logging.DEBUG)
 
 
 app = Flask(__name__)
 
 # Simuler une base de données avec un dictionnaire
 items = {}
-
 
 # ROUTES
 # ------
@@ -63,7 +62,7 @@ def delete_item(name):
 @app.route('/timeout3s')
 def timeout3s():
     time.sleep(4)
-    return {'|message|': '|| 3s ||'}, 200
+    return {'|message|': '|| 4s ||'}, 200
 
 
 @app.route('/exception')
@@ -83,12 +82,12 @@ def value_error(val):
 from flask import abort
 @app.route('/401')
 def error_401():
-    abort(401, description='|| 401 ||')
+    abort(401, description='|| 401  recup||')
 
 
-@app.route('/402')
-def error_402():
-    return jsonify({'|message|': '|| 402 ||'}), 402
+# @app.route('/401')
+# def error_401():
+#     return jsonify({'|message|': '|| 401 ||'}), 401
 
 
 @app.route('/403')
@@ -105,6 +104,16 @@ def error_405():
     # qui sera gérée par son handler respectif
     abort(405, description='|| 405 ||')
 
+from flask import Response
+from flask import stream_with_context
+@app.route('/stream')
+def stream_example():
+    def generate():
+        yield 'Hello '
+        yield 'World!'
+    return Response(stream_with_context(generate()))
+
+
 
 
 # Gestion des erreurs courantes
@@ -117,6 +126,13 @@ def error_405():
 # -----------------------------
 
 # Toutes les erreurs seront loggées grâce à logging
+
+
+# Message qui sera loggé, non personalisé, et renvoyé au client tel quel
+@app.errorhandler(401)
+def handle_exception_401(error):
+    return f"Pas de chance vous tombez sur une erreur : {error}", 401
+
 
 # Message qui sera loggé, non personalisé, et renvoyé au client tel quel
 @app.errorhandler(403)
@@ -144,6 +160,7 @@ def handle_exception_405(error):
 @app.errorhandler(TypeError)
 def handle_type_error(e):
     return "|| Type Error ||", 500
+
 
 
 if __name__ == '__main__':
