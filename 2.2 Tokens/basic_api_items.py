@@ -49,7 +49,7 @@ import datetime
 def login():
     auth = request.authorization
     if auth and auth.username == app.config['USERNAME'] and auth.password == app.config['SECRET_KEY']:
-        token = jwt.encode({'user': auth.username, 'exp': expiration_date()}, app.config['SECRET_KEY'])
+        token = jwt.encode({'user': auth.username, 'exp': expiration_date()}, auth.password, algorithm='HS256')
         return jsonify({'token': token})
 
     return jsonify({'message': 'Could not verify'}), 403
@@ -57,17 +57,16 @@ def login():
 
 def token_required(f):
     @wraps(f)  # permet d'attribuer le décorateur à plusieurs fonctions
-    def decorator(*args, **kwargs):
+    def wrapper(*args, **kwargs):
         token = request.headers.get('Authorization')
         if not token:
             return jsonify({'message': 'Token is missing!'}), 403
         try:
             data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])
-            print(data)
         except:
             return jsonify({'message': 'Token is invalid!'}), 403
         return f(*args, **kwargs)
-    return decorator
+    return wrapper
 
 # ---------------------------------------------------- #
 
@@ -91,8 +90,8 @@ def update_item(name):
 
 
 # DELETE - Supprimer un item
-@token_required
 @app.route('/del_item/<string:name>', methods=['DELETE'])
+@token_required
 def delete_item(name):
     print(name)
     if name not in items:
