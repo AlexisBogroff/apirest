@@ -1,0 +1,65 @@
+{
+        "aom": {
+                "name": "None"
+        },
+        "community_resources": [],
+        "covered_area": {
+                "country": {
+                        "name": "France"
+                },
+                "name": "France",
+                "type": "country"
+        },
+        "created_at": "2022-04-11",
+        "datagouv_id": "625438b890bf88454b283a55",
+        "id": "625438b890bf88454b283a55",
+        "licence": "lov2",
+        "page_url": "https://transport.data.gouv.fr/datasets/base-nationale-consolidee-des-zones-a-faibles-emissions",
+        "publisher": {
+                "name": "Point d'Accès National transport.data.gouv.fr",
+                "type": "organization"
+        },
+ 
+        "resources": [
+                {
+                        "datagouv_id": "b1833622-6770-4d5c-9d90-f9493a969d2d",
+                        "format": "csv",
+                        "id": 79760,
+                        "is_available": "True",
+                        "original_url": "https://raw.githubusercontent.com/etalab/transport-site/master/apps/transport/priv/zfe_ids.csv",
+                        "page_url": "https://transport.data.gouv.fr/resources/79760",
+                        "title": "Identifiants des ZFE",
+                        "type": "documentation",
+                        "updated": "2022-09-19T16:31:12.875000Z",
+                        "url": "https://www.data.gouv.fr/fr/datasets/r/b1833622-6770-4d5c-9d90-f9493a969d2d"},
+                {
+                        "datagouv_id": "3a5d0c66-aef9-4d68-841f-4fe81c9de980",
+                        "format": "geojson",
+                        "id": 79568,
+                        "is_available": "True",
+                        "original_url": "https://static.data.gouv.fr/resources/base-nationale-consolidee-des-zones-a-faibles-emissions/20231024-100824/voies.geojson",
+                        "page_url": "https://transport.data.gouv.fr/resources/79568",
+                        "schema_name": "etalab/schema-zfe",
+                        "title": "voies.geojson",
+                        "type": "main",
+                        "updated": "2023-10-24T12:08:24.460000Z",
+                        "url": "https://www.data.gouv.fr/fr/datasets/r/3a5d0c66-aef9-4d68-841f-4fe81c9de980"},
+                {
+                        "datagouv_id": "673a16bf-49ec-4645-9da2-cf975d0aa0ea",
+                        "format": "geojson",
+                        "id": 79567,
+                        "is_available": "True",
+                        "original_url": "https://static.data.gouv.fr/resources/base-nationale-consolidee-des-zones-a-faibles-emissions/20231024-100822/aires.geojson",
+                        "page_url": "https://transport.data.gouv.fr/resources/79567",
+                        "schema_name": "etalab/schema-zfe",
+                        "title": "aires.geojson",
+                        "type": "main",
+                        "updated": "2023-10-24T12:08:23.136000Z",
+                        "url": "https://www.data.gouv.fr/fr/datasets/r/673a16bf-49ec-4645-9da2-cf975d0aa0ea"
+                }
+        ],
+        "slug": "base-nationale-consolidee-des-zones-a-faibles-emissions",
+        "title": "Base Nationale des Zones à Faibles Émissions (BNZFE)",
+        "type": "low-emission-zones",
+        "updated": "2023-10-24T12:08:24.460000Z"
+}
