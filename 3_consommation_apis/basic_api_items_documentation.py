@@ -85,6 +85,16 @@ class DeleteItem(Resource):
 
         del items[name]
         return {'message': 'Item deleted'}, 200
+    
+# DELETE - Supprimer tous les items
+@api.route('/delete_items/', methods=['DELETE'])
+class DeleteItems(Resource):
+    @api.doc(description="Supprimer tous les items")
+    def delete(self):
+        global items
+        items = {}
+        return {'message': 'All items deleted'}, 200
+
 
 
 # Utilisateur : get et post dans la même classe avec des parseurs différents
