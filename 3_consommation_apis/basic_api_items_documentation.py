@@ -28,6 +28,9 @@ parser_perso_info_get = reqparse.RequestParser()
 parser_perso_info_get.add_argument('user', type=str, required=True, help='Name of the user')
 
 
+# Ajout d'une fonction stupide pour démontrer le fonctionnement des tests unitaires
+def mult(a, b):
+    return a * b
 
 # GET - Récupérer tous les items
 @api.route('/get_items')
